@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+function Rectangle(w,h){
+	var width = w;
+	var height = h;
+	
+	this.getWidth = function (){return w;}
+	this.getHeight = function (){return h;}
+	
+	this.setWidth = function(w){
+		if(w < 0){
+			throw '길이는 음수일 수 없다.';
+		}else{
+			width = w;
+		}
+	};
+	
+	this.setHeight = function(h){
+		if(h < 0)
+			throw '길이는 음수일 수 없다.';
+		else
+			height = h;
+	};
+}
+
+Rectangle.prototype.getArea = function(){
+	return this.getWidth() * this.getHeight();
+};
+
+function Square(length){
+	this.base = Rectangle;//Square가 Rectangle의 상속을 받음 
+	this.base(length, length);
+}
+
+Square.prototype = Rectangle.prototype;
+alert("a : " + Square.constructor());
+Square.prototype.constructor = Square;
+alert("b : " + Square.constructor());
+
+var rectangle = new Rectangle(5,7);
+var square = new Square(5);
+alert(rectangle.getArea() + " : " + square.getArea());
+
+</script>
+</head>
+<body>
+
+</body>
+</html>
