@@ -1,4 +1,3 @@
-import java.util.Arrays;
 import java.util.Scanner;
 
 public class BigPlus {
@@ -17,24 +16,20 @@ public class BigPlus {
 		System.out.println("second input number : ");
 		inputNum2 = sc2.nextLine().toCharArray();
 		
-		BigPlus(inputNum1, inputNum2);
+		numCipher(inputNum1, inputNum2);//자릿수 계산 
+		
+		sc1.close();
+		sc2.close();
 	}
-
-	private static void BigPlus(char[] inputNum1, char[] inputNum2) {
-
-		int iTempResult = 0;
-		String sReverseResult = "";
-		String sResult = "";
-		int carry = 0;
-		int maxLength = 0;
-		int minLength = 0;
-		int num1 = 0;
-		int num2 = 0;
-		int rem = 0;
-		boolean isBig = true;
-		String temp = "";
+	
+	private static void numCipher(char[] inputNum1, char[] inputNum2){
+		
 		String input1 = new String(inputNum1);
 		String input2 = new String(inputNum2);
+		int maxLength = 0;
+		int minLength = 0;
+		String temp = "";
+		boolean isBig = true;
 		
 		//입력 자릿수가 다른 경우 큰 숫자 기준으로 덧셈 for문 동작 
 		if(inputNum1.length > inputNum2.length){
@@ -60,6 +55,21 @@ public class BigPlus {
 		
 		inputNum1 = input1.toCharArray();
 		inputNum2 = input2.toCharArray();
+		
+		BigPlusResult(inputNum1, inputNum2, maxLength);//최종 합
+		
+	}
+
+	private static void BigPlusResult(char[] inputNum1, char[] inputNum2, int maxLength) {
+
+		int iTempResult = 0;
+		String sReverseResult = "";
+		String sResult = "";
+		int carry = 0;
+		
+		int num1 = 0;
+		int num2 = 0;
+		int rem = 0;
 		
 		for (int i = maxLength-1; i >= 0 ; i--) {//자릿수가 다른경우 작은 숫자 배열에 값이 없을 때 error 발생
 			num1 = Integer.parseInt(String.valueOf(inputNum1[i]));
