@@ -41,6 +41,12 @@ public class AsyncServlet extends HttpServlet{
 				}
 				
 				System.out.println("====Async complete=====");
+				try {
+					response.getWriter().println("====Async complete=====");
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 				asyncContext.complete(); //client와 연결 종료 
 			}
 		});
