@@ -24,5 +24,6 @@ public class Interview_Q1 {
 			System.out.println(number + " % 3 = " + number % 3);
 			System.out.println(number + " % 5 = " + number % 5);
 		}
+		scan.close();
 	}
 }
